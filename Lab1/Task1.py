@@ -17,10 +17,10 @@ def input_info():
                                               "hour => ")) / SECONDS_IN_HOUR
     coeff_n = float(input("Input the lifeguard's deceleration coefficient in water => "))
     angle_theta = float(input("Input the lifeguard's movement direction (theta) in degrees => "))
-    if angle_theta >= 90 or angle_theta <= 0:
+    if angle_theta >= 90 or angle_theta <= -90:
         print("The Lifeguard will never get to a drowning person. We can calculate the angle of movement direction "
               "providing the shortest time to get to drowning person")
-        angle_theta = 0
+        angle_theta = 90
     return [dist_d1, dist_d2, dist_h, speed_v_sand, coeff_n, angle_theta]
 
 
@@ -43,9 +43,9 @@ def print_results(angle_theta, move_time):
 
 
 parameters = input_info()
-if parameters[5] == 0:
+if parameters[5] == 90:
     deg_step = 1
-    deg=0;
+    deg = 0;
     parameters[5] = 90 - deg_step
     smallest_time = time = calculate(parameters)
     while time <= smallest_time:
